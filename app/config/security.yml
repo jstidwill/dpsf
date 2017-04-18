@@ -1,0 +1,40 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        in_memory:
+            memory:
+                users:
+                    foo:
+                        password:           foo
+                        roles:              ROLE_USER
+                    bar:
+                        password:           bar
+                        roles:              [ROLE_USER, ROLE_ADMIN]
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        api:
+            pattern: ^/api/(?!token)
+            stateless: true
+            guard:
+                authenticators:
+                    - app.jwt_token_authenticator
+        main:
+            anonymous: ~
+            # activate different ways to authenticate
+
+            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            #form_login: ~
+
+    access_control:
+        - { path: /api/token-authentication, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api, roles: [ROLE_ADMINISTRATOR, ROLE_FORM_TUTOR, ROLE_OFFICE, ROLE_STAFF_ADMIN, ROLE_SCHOOL_LEADERSHIP_TEAM] }
