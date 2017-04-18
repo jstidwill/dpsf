@@ -23,6 +23,7 @@ class UserRole
         7 => 'ROLE_PARENT',
         8 => 'ROLE_PUPIL',
         9 => 'ROLE_STAFF_ADMIN',
+        10 => 'ROLE_TEACHER',
         11 => 'ROLE_SCHOOL_LEADERSHIP_TEAM',
     ];
 
