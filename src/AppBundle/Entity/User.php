@@ -9,7 +9,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * User
  *
- * @ORM\Table(name="v_users")
+ * @ORM\Table(name="v_user")
  * @ORM\Entity(repositoryClass="Doctrine\ORM\EntityRepository")
  */
 class User implements UserInterface
